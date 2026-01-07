@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyascfdl"
+version = "0.1.0"
+description = "Python library for creating, manipulating, and processing ASC Framing Decision Lists (FDLs)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Eden An", email = "eden.annn@gmail.com"}
+]
+maintainers = [
+    {name = "Eden An", email = "eden.annn@gmail.com"}
+]
+keywords = [
+    "ASC",
+    "FDL",
+    "Framing Decision List",
+    "cinematography",
+    "video production",
+    "post-production",
+    "aspect ratio",
+    "framing",
+    "camera code",
+]
+dependencies = [
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/eden-annn/FDL"
+Documentation = "https://github.com/eden-annn/FDL#readme"
+Repository = "https://github.com/eden-annn/FDL"
+Issues = "https://github.com/eden-annn/FDL/issues"
+
+[tool.setuptools]
+package-dir = {"" = "python"}
+
+[tool.setuptools.packages.find]
+where = ["python"]
+include = ["fdl*"]
+exclude = ["tests*"]
+
+[tool.mypy]
+mypy_path = "python"
+
+[tool.ruff]
+line-length = 100

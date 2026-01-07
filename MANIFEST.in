@@ -1,0 +1,15 @@
+# Include documentation and metadata files
+include README.md
+include LICENSE
+include pyproject.toml
+
+# Exclude test files, examples, backup, and docs from distribution
+recursive-exclude tests *
+
+# Exclude caches and build artifacts
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
+recursive-exclude * .ruff_cache
+recursive-exclude * .pytest_cache
+exclude .gitignore

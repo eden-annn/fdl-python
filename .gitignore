@@ -1,0 +1,77 @@
+# Docs
+examples
+docs
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+out/
+*.egg-info/
+.eggs/
+
+# Python packaging
+*.whl
+*.tar.gz
+
+# Environment files
+.env
+.env.local
+.env.*
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Coverage directories
+coverage/
+.coverage
+htmlcov/
+
+# Temp files
+tmp/
+temp/
+backup/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing
+.pytest_cache/
+.tox/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
