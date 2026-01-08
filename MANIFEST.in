@@ -3,7 +3,7 @@ include README.md
 include LICENSE
 include pyproject.toml
 
-# Exclude test files, examples, backup, and docs from distribution
+# Exclude test files
 recursive-exclude tests *
 
 # Exclude caches and build artifacts

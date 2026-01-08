@@ -417,13 +417,12 @@ This approach maintains schema compatibility while providing enhanced Python erg
 
 - Python 3.10+
 - pydantic >= 2.0
-- attrs
 
 ## Development
 
 ```bash
 # Install development dependencies
-pip install pydantic attrs mypy ruff pytest
+pip install pydantic mypy ruff pytest
 
 # Run tests
 pytest tests/

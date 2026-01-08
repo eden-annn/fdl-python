@@ -1,11 +1,3 @@
-# Docs
-examples
-docs
-
-# Dependencies
-node_modules/
-vendor/
-
 # Build outputs
 dist/
 build/
