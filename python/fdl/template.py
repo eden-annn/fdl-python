@@ -1,8 +1,9 @@
 """CanavasTemplate model extension for the ASC Framing Decision List (FDL).
 
-This module provides the `CanavasTemplate` model extension used by the FDL. It supplies a 
+This module provides the `CanavasTemplate` model extension used by the FDL. It supplies a
 post-initialisation hook that serves validators and convenience methods.
 """
+
 from typing import Any
 
 from .schema import _CanvasTemplate

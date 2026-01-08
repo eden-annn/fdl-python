@@ -1,9 +1,9 @@
 """FDL schema type definitions.
 
-This schema module provides a centralized collection of Pydantic models representing the ASC Framing 
+This schema module provides a centralized collection of Pydantic models representing the ASC Framing
 Decision List specification for improved maintainability and readability.
 
-All the FDL schema are generated based on the official `ascfdl.schema.v2.json`, but small number of 
+All the FDL schema are generated based on the official `ascfdl.schema.v2.json`, but small number of
 attribute field settings are slighlty modified to better suit the Python API usage.
 
 Note on underscore-prefixed classes:

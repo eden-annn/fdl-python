@@ -1,6 +1,6 @@
 """FDL CanvasTemplate Processor module.
 
-Applies a `CanvasTemplate` to a source `Canvas` to produce a derived canvas. The processor runs a 
+Applies a `CanvasTemplate` to a source `Canvas` to produce a derived canvas. The processor runs a
 complete pipeline to generate a new Canvas according to the template's rules, which includes:
  - resolves source/target dimensions
  - scale factors
@@ -9,6 +9,7 @@ complete pipeline to generate a new Canvas according to the template's rules, wh
  - performs rounding
  - rescales framing decisions
 """
+
 from typing import Optional
 
 from .calc import rounding, to_int_dimensions
@@ -30,7 +31,7 @@ from .schema import (
 class CanvasTemplateProcessor:
     """Processor that applies a `CanvasTemplate` to a source `Canvas`.
 
-    The processor is initialized with a `CanvasTemplate`. Calling `create_canvas` with a source 
+    The processor is initialized with a `CanvasTemplate`. Calling `create_canvas` with a source
     canvas runs the complete template pipeline, and assembles the resulting `Canvas`.
     """
 

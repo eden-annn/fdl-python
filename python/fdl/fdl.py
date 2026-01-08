@@ -155,7 +155,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
                 return framing_intent
 
         raise ValueError(f"Framing intent ID '{framing_intent_id}' not found")
-    
+
     def iter_framing_intents(self) -> Iterator[FramingIntent]:
         """Yield each `FramingIntent` present in the FDL."""
         if not self.framing_intents:
