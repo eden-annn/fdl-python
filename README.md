@@ -21,7 +21,26 @@ transformations, and framing decisions in professional video production workflow
 Install the ASC FDL Python library using pip:
 
 ```bash
-pip install pyascfdl
+pip install fdl-python
+```
+
+## Development Setup
+
+This project uses [uv](https://github.com/astral-sh/uv) for dependency management:
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone the repository
+git clone https://github.com/eden-annn/fdl-python.git
+cd fdl-python
+
+# Install dependencies (including dev dependencies)
+uv sync
+
+# Run tests
+uv run pytest
 ```
 
 ## Quick Start

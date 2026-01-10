@@ -1,31 +1,18 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "pyascfdl"
+name = "fdl-python"
 version = "0.1.0"
-description = "Python library for creating, manipulating, and processing ASC Framing Decision Lists (FDLs)"
+description = "ASC Framing Decision List (FDL) Python library"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Eden An", email = "eden.annn@gmail.com"}
 ]
-maintainers = [
-    {name = "Eden An", email = "eden.annn@gmail.com"}
-]
-keywords = [
-    "ASC",
-    "FDL",
-    "Framing Decision List",
-    "cinematography",
-    "video production",
-    "post-production",
-    "aspect ratio",
-    "framing",
-    "camera code",
-]
+keywords = ["ASC", "FDL", "Framing Decision List", "cinematography"]
 dependencies = [
     "pydantic>=2.0.0",
 ]
@@ -37,22 +24,39 @@ dev = [
     "ruff>=0.1.0",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
 [project.urls]
-Homepage = "https://github.com/eden-annn/FDL"
-Documentation = "https://github.com/eden-annn/FDL#readme"
-Repository = "https://github.com/eden-annn/FDL"
-Issues = "https://github.com/eden-annn/FDL/issues"
+Homepage = "https://github.com/eden-annn/fdl-python"
+Repository = "https://github.com/eden-annn/fdl-python"
+Issues = "https://github.com/eden-annn/fdl-python/issues"
 
-[tool.setuptools]
-package-dir = {"" = "python"}
+[tool.hatch.build.targets.wheel]
+packages = ["python/fdl"]
 
-[tool.setuptools.packages.find]
-where = ["python"]
-include = ["fdl*"]
-exclude = ["tests*"]
+[tool.hatch.build.targets.sdist]
+include = [
+    "python/fdl",
+    "LICENSE",
+    "README.md",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.mypy]
 mypy_path = "python"
+strict = true
 
 [tool.ruff]
 line-length = 100
+src = ["python"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
