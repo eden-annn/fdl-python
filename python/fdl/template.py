@@ -4,7 +4,7 @@ This module provides the `CanavasTemplate` model extension used by the FDL. It s
 post-initialisation hook that serves validators and convenience methods.
 """
 
-from typing import Any
+from typing import Any, Optional
 
 from .schema import _CanvasTemplate
 
@@ -12,7 +12,7 @@ from .schema import _CanvasTemplate
 class CanvasTemplate(_CanvasTemplate):
     """Template"""
 
-    def model_post_init(self, __context: Any | None) -> None:
+    def model_post_init(self, __context: Optional[Any]) -> None:
         """
         This method is called after the model is initialized to calculate any necessary values or
         perform additional setup.

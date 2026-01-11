@@ -6,7 +6,7 @@ and canvas templates, and to serialize/parse FDL documents.
 """
 
 from uuid import uuid4
-from typing import Any, Iterator
+from typing import Any, Iterator, Optional, Union
 from typing_extensions import Self
 
 from pydantic import field_validator
@@ -24,7 +24,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
     validations, such as ensuring unique FDL IDs, and methods for serialization and deserialization.
     """
 
-    def model_post_init(self, __context: Any | None) -> None:
+    def model_post_init(self, __context: Optional[Any]) -> None:
         """
         This method is called after the model is initialized to calculate any necessary values or
         perform additional setup.
@@ -39,8 +39,8 @@ class AscFramingDecisionList(_AscFramingDecisionList):
     @classmethod
     def validate_uniqueness_framing_intents(
         cls,
-        framing_intents: list[FramingIntent] | None,
-    ) -> list[FramingIntent] | None:
+        framing_intents: Optional[list[FramingIntent]],
+    ) -> Optional[list[FramingIntent]]:
         """Validate that all framing intent IDs are unique."""
         if framing_intents is None:
             return None
@@ -59,8 +59,8 @@ class AscFramingDecisionList(_AscFramingDecisionList):
     @classmethod
     def validate_uniqueness_canvas_templates(
         cls,
-        canvas_templates: list[CanvasTemplate] | None,
-    ) -> list[CanvasTemplate] | None:
+        canvas_templates: Optional[list[CanvasTemplate]],
+    ) -> Optional[list[CanvasTemplate]]:
         """Validate that all CanvasTemplate IDs are unique."""
         if canvas_templates is None:
             return None
@@ -98,9 +98,9 @@ class AscFramingDecisionList(_AscFramingDecisionList):
 
     def add_framing_decision_to_canvas(
         self,
-        framing_intent: FramingIntent | FdlId,
-        canvas: Canvas | FdlId,
-        label: str | None = None,
+        framing_intent: Union[FramingIntent, FdlId],
+        canvas: Union[Canvas, FdlId],
+        label: Optional[str] = None,
     ) -> FramingDecision:
         """Add a new framing decision to a canvas based on a framing intent.
 
@@ -131,7 +131,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
         return canvas_template
 
     def get_canvas_by_id(
-        self, canvas_id: str | FdlId, from_context: Context | None = None
+        self, canvas_id: Union[str, FdlId], from_context: Optional[Context] = None
     ) -> Canvas:
         """Get a canvas by its ID. Searches within the specified context if provided"""
         canvas_id = FdlId.model_validate(str(canvas_id))
@@ -147,7 +147,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
 
         raise ValueError(f"Canvas ID '{canvas_id}' not found in any context")
 
-    def get_framing_intent_by_id(self, framing_intent_id: str | FdlId) -> FramingIntent:
+    def get_framing_intent_by_id(self, framing_intent_id: Union[str, FdlId]) -> FramingIntent:
         """Get a framing intent by its ID."""
         fdl_id = FdlId.model_validate(str(framing_intent_id))
         for framing_intent in self.framing_intents or []:
@@ -180,7 +180,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
         for context in self.contexts:
             yield context
 
-    def set_default_framing_intent(self, framing_intent_id: str | FdlId) -> None:
+    def set_default_framing_intent(self, framing_intent_id: Union[str, FdlId]) -> None:
         """Set the default framing intent for the FDL.
 
         Raises:
@@ -188,7 +188,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
         """
         self.default_framing_intent = FdlId.model_validate(str(framing_intent_id))
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         """Convert the FDL to a dictionary."""
         return self.model_dump()
 
@@ -214,7 +214,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
         return self.model_dump_json(indent=indent)
 
     @classmethod
-    def from_dict(cls, dict_data: dict) -> Self:
+    def from_dict(cls, dict_data: dict[str, Any]) -> Self:
         """Create a FramingDecisionList from a dictionary.
 
         Args:

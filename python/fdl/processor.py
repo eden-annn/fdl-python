@@ -10,7 +10,7 @@ complete pipeline to generate a new Canvas according to the template's rules, wh
  - rescales framing decisions
 """
 
-from typing import Optional
+from typing import Optional, Union
 
 from .calc import rounding, to_int_dimensions
 from .canvas import Canvas
@@ -244,7 +244,7 @@ class CanvasTemplateProcessor:
 
     def _get_source_dims(
         self,
-        source: FitSource | PreserveFromSourceCanvas,
+        source: Union[FitSource, PreserveFromSourceCanvas],
         source_canvas: Canvas,
         framing_decision_id: Optional[FdlIdFramingDecision] = None,
     ) -> DimensionsFloat:

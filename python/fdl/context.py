@@ -5,7 +5,7 @@ post-initialisation hook that serves validators and convenience methods creating
 such as Canvases.
 """
 
-from typing import Iterator
+from typing import Iterator, Optional, Union
 
 from pydantic import field_validator
 
@@ -22,7 +22,9 @@ class Context(_Context):
 
     @field_validator("canvases")
     @classmethod
-    def validate_uniqueness_canvases(cls, canvases: list[Canvas] | None) -> list[Canvas] | None:
+    def validate_uniqueness_canvases(
+        cls, canvases: Optional[list[Canvas]]
+    ) -> Optional[list[Canvas]]:
         """Ensure each canvas in the context has a unique ID.
 
         Raises:
@@ -55,7 +57,7 @@ class Context(_Context):
 
         return canvas
 
-    def get_canvas_by_id(self, canvas_id: str | FdlId) -> Canvas:
+    def get_canvas_by_id(self, canvas_id: Union[str, FdlId]) -> Canvas:
         """Return the canvas with `canvas_id` from this context.
 
         Raises:

@@ -6,7 +6,7 @@ validators such as uniqueness of the FramingDecision IDs, and convenience method
 subsequent models such as FramingDecisions.
 """
 
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import field_validator
 
@@ -25,7 +25,7 @@ class Canvas(_Canvas):
     helpers needed in FDL workflows.
     """
 
-    def model_post_init(self, __context: Any | None) -> None:
+    def model_post_init(self, __context: Optional[Any]) -> None:
         """Post-initialisation hook.
 
         This validates and helps to automatically get appropriate `effective_anchor_point` when
@@ -52,8 +52,8 @@ class Canvas(_Canvas):
     @field_validator("framing_decisions")
     @classmethod
     def validate_uniqueness_framing_decisions(
-        cls, framing_decisions: list[FramingDecision] | None
-    ) -> list[FramingDecision] | None:
+        cls, framing_decisions: Optional[list[FramingDecision]]
+    ) -> Optional[list[FramingDecision]]:
         """Ensure FramingDecision IDs are unique.
 
         Raises:
@@ -75,7 +75,7 @@ class Canvas(_Canvas):
     def add_framing_decision(
         self,
         framing_intent: FramingIntent,
-        label: str | None = None,
+        label: Optional[str] = None,
     ) -> FramingDecision:
         """Create and append a FramingDecision for framing_intent.
 

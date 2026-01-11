@@ -7,14 +7,14 @@ name = "fdl-python"
 version = "0.0.1"
 description = "ASC Framing Decision List (FDL) Python library"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
     {name = "Eden An", email = "eden.annn@gmail.com"}
 ]
 keywords = ["ASC", "FDL", "Framing Decision List", "cinematography"]
 dependencies = [
-    "pydantic>=2.0.0",
+    "pydantic>=2.6.0",
 ]
 
 [project.optional-dependencies]

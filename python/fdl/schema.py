@@ -13,7 +13,7 @@ extensions provide additional convenience methods, custom validations, and enhan
 while maintaining schema compatibility.
 """
 
-from typing import Annotated, Literal, TYPE_CHECKING
+from typing import Annotated, List, Literal, Optional, TYPE_CHECKING
 from pydantic import BaseModel, ConfigDict, Field, RootModel
 from enum import Enum
 from uuid import UUID
@@ -48,8 +48,8 @@ class ClipId(BaseModel):
         extra="forbid",
     )
     clip_name: str
-    file: str | None = None
-    sequence: Sequence | None = None
+    file: Optional[str] = None
+    sequence: Optional[Sequence] = None
 
 
 class FitSource(Enum):
@@ -149,23 +149,23 @@ class FramingIntent(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    label: str | None = None
+    label: Optional[str] = None
     id: FdlId
     aspect_ratio: DimensionsInt
-    protection: Annotated[float | None, Field(ge=0.0)] = 0
+    protection: Annotated[Optional[float], Field(ge=0.0)] = 0
 
 
 class FramingDecision(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    label: str | None = None
+    label: Optional[str] = None
     id: FdlIdFramingDecision
     framing_intent_id: FdlId
     dimensions: DimensionsFloat
     anchor_point: PointFloat
-    protection_dimensions: DimensionsFloat | None = None
-    protection_anchor_point: PointFloat | None = None
+    protection_dimensions: Optional[DimensionsFloat] = None
+    protection_anchor_point: Optional[PointFloat] = None
 
 
 class _Canvas(BaseModel):
@@ -173,16 +173,16 @@ class _Canvas(BaseModel):
         extra="forbid",
         validate_assignment=True,
     )
-    label: str | None = None
+    label: Optional[str] = None
     id: FdlId
     source_canvas_id: FdlId
     dimensions: DimensionsInt
-    effective_dimensions: DimensionsInt | None = None
-    effective_anchor_point: PointFloat | None = None
-    photosite_dimensions: DimensionsInt | None = None
-    physical_dimensions: DimensionsFloat | None = None
-    anamorphic_squeeze: Annotated[float | None, Field(gt=0.0)] = 1.0
-    framing_decisions: list[FramingDecision] | None = None
+    effective_dimensions: Optional[DimensionsInt] = None
+    effective_anchor_point: Optional[PointFloat] = None
+    photosite_dimensions: Optional[DimensionsInt] = None
+    physical_dimensions: Optional[DimensionsFloat] = None
+    anamorphic_squeeze: Annotated[Optional[float], Field(gt=0.0)] = 1.0
+    framing_decisions: Optional[List[FramingDecision]] = None
 
 
 class _Context(BaseModel):
@@ -190,10 +190,10 @@ class _Context(BaseModel):
         extra="forbid",
         validate_assignment=True,
     )
-    label: str | None = None
-    context_creator: str | None = None
-    clip_id: ClipId | None = None
-    canvases: list["Canvas"] | None = None
+    label: Optional[str] = None
+    context_creator: Optional[str] = None
+    clip_id: Optional[ClipId] = None
+    canvases: Optional[List["Canvas"]] = None
 
 
 class _CanvasTemplate(BaseModel):
@@ -201,18 +201,20 @@ class _CanvasTemplate(BaseModel):
         extra="forbid",
         validate_assignment=True,
     )
-    label: str | None = None
+    label: Optional[str] = None
     id: FdlId
     target_dimensions: DimensionsInt
     target_anamorphic_squeeze: Annotated[float, Field(ge=0.0)]
     fit_source: FitSource
     fit_method: FitMethod
-    alignment_method_vertical: AlignmentMethodVertical | None = AlignmentMethodVertical.center
-    alignment_method_horizontal: AlignmentMethodHorizontal | None = AlignmentMethodHorizontal.center
-    preserve_from_source_canvas: PreserveFromSourceCanvas | None = PreserveFromSourceCanvas.none
-    maximum_dimensions: DimensionsInt | None = None
-    pad_to_maximum: bool | None = False
-    round: Round | None = None
+    alignment_method_vertical: Optional[AlignmentMethodVertical] = AlignmentMethodVertical.center
+    alignment_method_horizontal: Optional[AlignmentMethodHorizontal] = (
+        AlignmentMethodHorizontal.center
+    )
+    preserve_from_source_canvas: Optional[PreserveFromSourceCanvas] = PreserveFromSourceCanvas.none
+    maximum_dimensions: Optional[DimensionsInt] = None
+    pad_to_maximum: Optional[bool] = False
+    round: Optional[Round] = None
 
 
 class _AscFramingDecisionList(BaseModel):
@@ -220,10 +222,10 @@ class _AscFramingDecisionList(BaseModel):
         extra="forbid",
         validate_assignment=True,
     )
-    uuid: UUID | None = None
-    version: Version | None = None
-    fdl_creator: str | None = None
-    default_framing_intent: FdlId | None = None
-    framing_intents: list[FramingIntent] | None = None
-    contexts: list["Context"] | None = None
-    canvas_templates: list["CanvasTemplate"] | None = None
+    uuid: Optional[UUID] = None
+    version: Optional[Version] = None
+    fdl_creator: Optional[str] = None
+    default_framing_intent: Optional[FdlId] = None
+    framing_intents: Optional[List[FramingIntent]] = None
+    contexts: Optional[List["Context"]] = None
+    canvas_templates: Optional[List["CanvasTemplate"]] = None
