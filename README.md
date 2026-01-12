@@ -440,24 +440,8 @@ This approach maintains schema compatibility while providing enhanced Python erg
 
 ## Requirements
 
-- Python 3.10+
-- pydantic >= 2.0
-
-## Development
-
-```bash
-# Install development dependencies
-pip install pydantic mypy ruff pytest
-
-# Run tests
-pytest tests/
-
-# Type checking
-mypy python/fdl/
-
-# Format code
-ruff format python/
-```
+- Python 3.9+
+- pydantic >= 2.6
 
 ## Contributing
 
