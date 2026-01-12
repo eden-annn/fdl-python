@@ -1,0 +1,26 @@
+fdl-python - Python Implementation of ASC Framing Decision List
+
+This project implements the ASC Framing Decision List (FDL) specification.
+
+================================================================================
+
+FDL Specification:
+  Copyright (c) American Society of Cinematographers (ASC)
+  Website: https://theasc.com/
+  Specification: https://github.com/ascmitc/fdl
+
+The Framing Decision List (FDL) specification, concepts, and related 
+intellectual property are owned by the American Society of Cinematographers (ASC).
+
+================================================================================
+
+Python Implementation:
+  Copyright (c) 2026 Eden An
+  Licensed under the BSD 3-Clause License
+  Repository: https://github.com/eden-annn/fdl-python
+
+This implementation is independent and not officially affiliated with or 
+endorsed by the American Society of Cinematographers (ASC) unless explicitly 
+stated otherwise.
+
+================================================================================

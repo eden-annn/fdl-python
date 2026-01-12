@@ -5,6 +5,15 @@ A Python library for creating, manipulating, and processing
 This implementation provides a high-level API for working with framing intents, canvas 
 transformations, and framing decisions in professional video production workflows.
 
+## About FDL
+
+The **Framing Decision List (FDL)** specification is developed and maintained by the 
+[American Society of Cinematographers (ASC)](https://theasc.com/). The FDL specification, 
+concepts, and related intellectual property are owned by ASC.
+
+This library provides an independent Python implementation of the FDL specification and is 
+not officially affiliated with or endorsed by ASC unless explicitly stated.
+
 ## Features
 
 - **Comprehensive FDL Support**: Full implementation of the [ASC FDL v2.0 specification](https://github.com/ascmitc/fdl/blob/main/Specification/ASCFDL_Specification_v2.0.pdf)
@@ -29,9 +38,6 @@ pip install fdl-python
 This project uses [uv](https://github.com/astral-sh/uv) for dependency management:
 
 ```bash
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
 # Clone the repository
 git clone https://github.com/eden-annn/fdl-python.git
 cd fdl-python
@@ -464,7 +470,20 @@ Contributions are welcome! Please ensure:
 
 ## License
 
-[To be added...]
+### FDL Specification
+The Framing Decision List (FDL) specification, concepts, and related intellectual property 
+are owned by the **American Society of Cinematographers (ASC)**.
+
+- **Website**: https://theasc.com/
+- **Specification Repository**: https://github.com/ascmitc/fdl
+
+### Python Implementation
+This Python implementation is licensed under the **BSD 3-Clause License**.
+
+See the [LICENSE](LICENSE) and [NOTICE](NOTICE) files for full details.
+
+This implementation is independent and not officially affiliated with or endorsed by 
+the American Society of Cinematographers (ASC) unless explicitly stated.
 
 ## References
 
