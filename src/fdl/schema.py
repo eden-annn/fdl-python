@@ -181,7 +181,7 @@ class _Canvas(BaseModel):
     effective_anchor_point: Optional[PointFloat] = None
     photosite_dimensions: Optional[DimensionsInt] = None
     physical_dimensions: Optional[DimensionsFloat] = None
-    anamorphic_squeeze: Annotated[Optional[float], Field(gt=0.0)] = 1.0
+    anamorphic_squeeze: Annotated[float, Field(gt=0.0)] = 1.0
     framing_decisions: Optional[list[FramingDecision]] = None
 
 
