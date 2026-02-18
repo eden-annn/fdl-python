@@ -152,7 +152,7 @@ class FramingIntent(BaseModel):
     label: Optional[str] = None
     id: FdlId
     aspect_ratio: DimensionsInt
-    protection: Annotated[Optional[float], Field(ge=0.0)] = 0
+    protection: Annotated[float, Field(ge=0.0, le=1.0)] = 0.0
 
 
 class FramingDecision(BaseModel):
