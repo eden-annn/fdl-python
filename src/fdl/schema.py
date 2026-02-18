@@ -13,7 +13,7 @@ extensions provide additional convenience methods, custom validations, and enhan
 while maintaining schema compatibility.
 """
 
-from typing import Annotated, List, Literal, Optional, TYPE_CHECKING
+from typing import Annotated, Literal, Optional, TYPE_CHECKING
 from pydantic import BaseModel, ConfigDict, Field, RootModel
 from enum import Enum
 from uuid import UUID
@@ -182,7 +182,7 @@ class _Canvas(BaseModel):
     photosite_dimensions: Optional[DimensionsInt] = None
     physical_dimensions: Optional[DimensionsFloat] = None
     anamorphic_squeeze: Annotated[Optional[float], Field(gt=0.0)] = 1.0
-    framing_decisions: Optional[List[FramingDecision]] = None
+    framing_decisions: Optional[list[FramingDecision]] = None
 
 
 class _Context(BaseModel):
@@ -193,7 +193,7 @@ class _Context(BaseModel):
     label: Optional[str] = None
     context_creator: Optional[str] = None
     clip_id: Optional[ClipId] = None
-    canvases: Optional[List["Canvas"]] = None
+    canvases: Optional[list["Canvas"]] = None
 
 
 class _CanvasTemplate(BaseModel):
@@ -226,6 +226,6 @@ class _AscFramingDecisionList(BaseModel):
     version: Optional[Version] = None
     fdl_creator: Optional[str] = None
     default_framing_intent: Optional[FdlId] = None
-    framing_intents: Optional[List[FramingIntent]] = None
-    contexts: Optional[List["Context"]] = None
-    canvas_templates: Optional[List["CanvasTemplate"]] = None
+    framing_intents: Optional[list[FramingIntent]] = None
+    contexts: Optional[list["Context"]] = None
+    canvas_templates: Optional[list["CanvasTemplate"]] = None
