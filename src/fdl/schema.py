@@ -29,8 +29,8 @@ class Version(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    major: Literal[2]
-    minor: Literal[0]
+    major: Literal[2] = 2
+    minor: Literal[0] = 0
 
 
 class Sequence(BaseModel):
