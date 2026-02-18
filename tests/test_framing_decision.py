@@ -34,7 +34,7 @@ def test_framing_decision_fits_within_canvas(
     aspect_height: int,
     expected_width: int,
     expected_height: int,
-):
+) -> None:
     """
     Test that FramingDecision fits in the Canvas without cropping, for various aspect ratios.
     """
