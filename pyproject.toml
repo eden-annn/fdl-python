@@ -44,11 +44,11 @@ Repository = "https://github.com/eden-annn/fdl-python"
 Issues = "https://github.com/eden-annn/fdl-python/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["python/fdl"]
+packages = ["src/fdl"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "python/fdl",
+    "src/fdl",
     "LICENSE",
     "NOTICE",
     "README.md",
@@ -58,12 +58,12 @@ include = [
 testpaths = ["tests"]
 
 [tool.mypy]
-mypy_path = "python"
+mypy_path = "src"
 strict = true
 
 [tool.ruff]
 line-length = 100
-src = ["python"]
+src = ["src"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
