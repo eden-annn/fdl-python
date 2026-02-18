@@ -33,7 +33,7 @@ class AscFramingDecisionList(_AscFramingDecisionList):
             self.uuid = uuid4()
 
         if not self.version:
-            self.version = Version(major=2, minor=0)
+            self.version = Version()
 
     @field_validator("framing_intents")
     @classmethod
