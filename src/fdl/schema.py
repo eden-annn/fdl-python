@@ -16,7 +16,7 @@ while maintaining schema compatibility.
 from typing import Annotated, Literal, Optional, TYPE_CHECKING
 from pydantic import BaseModel, ConfigDict, Field, RootModel
 from enum import Enum
-from uuid import UUID
+from uuid import UUID, uuid4
 
 
 if TYPE_CHECKING:
@@ -222,8 +222,8 @@ class _AscFramingDecisionList(BaseModel):
         extra="forbid",
         validate_assignment=True,
     )
-    uuid: Optional[UUID] = None
-    version: Optional[Version] = None
+    uuid: UUID = Field(default_factory=uuid4)
+    version: Version = Version()
     fdl_creator: Optional[str] = None
     default_framing_intent: Optional[FdlId] = None
     framing_intents: Optional[list[FramingIntent]] = None

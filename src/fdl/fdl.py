@@ -5,7 +5,6 @@ convenience helpers to add FDL models such as contexts, canvases, framing intent
 and canvas templates, and to serialize/parse FDL documents.
 """
 
-from uuid import uuid4
 from typing import Any, Iterator, Optional, Union
 from typing_extensions import Self
 
@@ -14,7 +13,7 @@ from pydantic import field_validator
 from .context import Context
 from .canvas import Canvas
 from .template import CanvasTemplate
-from .schema import Version, FdlId, FramingIntent, FramingDecision, _AscFramingDecisionList
+from .schema import FdlId, FramingIntent, FramingDecision, _AscFramingDecisionList
 
 
 class AscFramingDecisionList(_AscFramingDecisionList):
@@ -23,17 +22,6 @@ class AscFramingDecisionList(_AscFramingDecisionList):
     This class provides convenience methods to manage FDL components, with their required
     validations, such as ensuring unique FDL IDs, and methods for serialization and deserialization.
     """
-
-    def model_post_init(self, __context: Optional[Any]) -> None:
-        """
-        This method is called after the model is initialized to calculate any necessary values or
-        perform additional setup.
-        """
-        if not self.uuid:
-            self.uuid = uuid4()
-
-        if not self.version:
-            self.version = Version()
 
     @field_validator("framing_intents")
     @classmethod
